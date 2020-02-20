@@ -1,7 +1,10 @@
-const crypto = require('crypto')
+// Imports
 const Sequelize = require('sequelize')
+const crypto = require('crypto')
+
 const db = require('../db')
 
+// Model
 const User = db.define('user', {
   email: {
     type: Sequelize.STRING,
@@ -29,18 +32,12 @@ const User = db.define('user', {
   }
 })
 
-module.exports = User
-
-/**
- * instanceMethods
- */
+// Instance Methods
 User.prototype.correctPassword = function(candidatePwd) {
   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
 }
 
-/**
- * classMethods
- */
+// Class Methods
 User.generateSalt = function() {
   return crypto.randomBytes(16).toString('base64')
 }
@@ -53,9 +50,7 @@ User.encryptPassword = function(plainText, salt) {
     .digest('hex')
 }
 
-/**
- * hooks
- */
+// Hooks
 const setSaltAndPassword = user => {
   if (user.changed('password')) {
     user.salt = User.generateSalt()
@@ -68,3 +63,6 @@ User.beforeUpdate(setSaltAndPassword)
 User.beforeBulkCreate(users => {
   users.forEach(setSaltAndPassword)
 })
+
+// Exports
+module.exports = User

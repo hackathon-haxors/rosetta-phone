@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 1337
 const app = express()
 const socketio = require('socket.io')
 const {blueBright, magenta, yellow} = require('chalk')
-module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
 // Otherwise, Mocha v4+ never quits after tests.
@@ -26,10 +25,10 @@ if (process.env.NODE_ENV === 'test') {
  * or show up on Github. On your production server, you can add these
  * keys as environment variables, so that they can still be read by the
  * Node process on process.env
- */
+ **/
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 
-// passport registration
+// Passport registration
 passport.serializeUser((user, done) => done(null, user.id))
 
 passport.deserializeUser(async (id, done) => {
@@ -42,17 +41,17 @@ passport.deserializeUser(async (id, done) => {
 })
 
 const createApp = () => {
-  // logging middleware
+  // Logging middleware
   app.use(morgan('dev'))
 
-  // body parsing middleware
+  // Body Parsing middleware
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
 
-  // compression middleware
+  // Compression middleware
   app.use(compression())
 
-  // session middleware with passport
+  // Session middleware with Passport
   app.use(
     session({
       secret: process.env.SESSION_SECRET || 'my best friend is Cody',
@@ -64,14 +63,14 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  // auth and api routes
+  // Auth and API routes
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
 
-  // static file-serving middleware
+  // Static File-Serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
 
-  // any remaining requests with an extension (.js, .css, etc.) send 404
+  // Any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
       const err = new Error('Not found')
@@ -82,30 +81,30 @@ const createApp = () => {
     }
   })
 
-  // sends index.html
+  // Sends index.html
   app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   })
 
-  // custom error handling
+  // Custom error handling
   app.use((err, req, res, next) => {
-    // just in case
+    // Just in case
     if (!err.stack || !err.message) {
       next(err)
     }
 
-    // clean up the trace to just relevant info
+    // Clean up the trace to just relevant info
     const cleanTrace = err.stack
       .split('\n')
       .filter(line => {
-        // comment out the next two lines for full (verbose) stack traces
-        const projectFile = line.indexOf(__dirname) > -1 // omit built-in Node code
-        const nodeModule = line.indexOf('node_modules') > -1 // omit npm modules
+        // Comment out the next two lines for full (verbose) stack traces
+        const projectFile = line.indexOf(__dirname) > -1 // Omit built-in Node code
+        const nodeModule = line.indexOf('node_modules') > -1 // Omit npm modules
         return projectFile && !nodeModule
       })
       .join('\n')
 
-    // colorize and format the output
+    // Colorize and format the output
     console.log(
       magenta(`
     >>>>> Error: ${err.message} <<<<<
@@ -114,13 +113,13 @@ ${yellow(cleanTrace)}
     `)
     )
 
-    // send back error status
+    // Send back error status
     res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
 }
 
 const startListening = () => {
-  // start listening (and create a 'server' object representing our server)
+  // Start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () => {
     console.log(`
 
@@ -131,7 +130,7 @@ const startListening = () => {
 `)
   })
 
-  // set up our socket control center
+  // Set up our Socket control center
   const io = socketio(server)
   require('./socket')(io)
 }
@@ -153,3 +152,5 @@ if (require.main === module) {
 } else {
   createApp()
 }
+
+module.exports = app

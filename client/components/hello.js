@@ -1,14 +1,13 @@
+// Imports
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 // Component
-export const UserHome = ({email}) => {
-  return (
-    <div>
-      <h3>Welcome, {email}</h3>
-    </div>
-  )
+export const Hello = ({email}) => {
+  const name = email.slice(0, email.indexOf('@'))
+
+  return <span className="navbar-user-name">Hello, {name}.</span>
 }
 
 // Container
@@ -18,9 +17,9 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(UserHome)
+export default connect(mapStateToProps)(Hello)
 
 // Prop Types
-UserHome.propTypes = {
+Hello.propTypes = {
   email: PropTypes.string
 }

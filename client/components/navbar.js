@@ -4,17 +4,20 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
+import Hello from './hello'
 import {logout} from '../store'
 
 // Component
 const Navbar = ({isLoggedIn, handleClick}) => {
   return (
-    <div>
-      <h1>Boilermaker</h1>
+    <div className="navbar-container">
+      <h1 className="navbar-logo-containee">Boilermaker</h1>
 
-      <nav>
+      <nav className="row-links-containee">
         {isLoggedIn ? (
           <div>
+            <Hello />
+
             {/* The navbar will show these links after you log in */}
             <Link to="/home">Home</Link>
 
@@ -31,7 +34,6 @@ const Navbar = ({isLoggedIn, handleClick}) => {
           </div>
         )}
       </nav>
-      <hr />
     </div>
   )
 }

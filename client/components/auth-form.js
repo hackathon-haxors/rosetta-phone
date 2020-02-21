@@ -8,32 +8,38 @@ import {auth} from '../store'
 // Component
 const AuthForm = ({name, displayName, error, handleSubmit}) => {
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
+    <div className="center">
+      <form
+        className="auth-container center"
+        name={name}
+        onSubmit={handleSubmit}
+      >
+        <div className="auth-containee">
           <label htmlFor="email">
             <small>Email</small>
           </label>
 
-          <input name="email" type="text" />
+          <input name="email" autoComplete="email" type="text" />
         </div>
 
-        <div>
+        <div className="auth-containee">
           <label htmlFor="password">
             <small>Password</small>
           </label>
 
-          <input name="password" type="password" />
+          <input name="password" autoComplete="password" type="password" />
         </div>
 
-        <div>
+        <div className="auth-containee">
           <button type="submit">{displayName}</button>
         </div>
 
         {error && error.response && <div> {error.response.data} </div>}
       </form>
 
-      <a href="/auth/google">{displayName} with Google</a>
+      <div className="center">
+        <a href="/auth/google">{displayName} with Google</a>
+      </div>
     </div>
   )
 }
@@ -65,9 +71,11 @@ const mapDispatchToProps = dispatch => {
   return {
     handleSubmit(event) {
       event.preventDefault()
+
       const formName = event.target.name
       const email = event.target.email.value
       const password = event.target.password.value
+
       dispatch(auth(email, password, formName))
     }
   }

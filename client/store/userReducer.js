@@ -8,7 +8,7 @@ const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 
 // Initial State
-const defaultUser = {}
+const initialState = {}
 
 // Action Creators
 const getUser = user => ({type: GET_USER, user})
@@ -19,7 +19,7 @@ export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
 
-    dispatch(getUser(res.data || defaultUser))
+    dispatch(getUser(res.data || initialState))
   } catch (err) {
     console.error(err)
   }
@@ -54,13 +54,13 @@ export const logout = () => async dispatch => {
 }
 
 // Reducer
-export default function(state = defaultUser, action) {
+export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER:
       return action.user
 
     case REMOVE_USER:
-      return defaultUser
+      return initialState
 
     default:
       return state

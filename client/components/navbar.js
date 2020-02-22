@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Hello from './hello'
+import Hello from './Hello'
 import {logout} from '../store'
 
 // Component

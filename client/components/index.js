@@ -4,7 +4,7 @@
  * having to figure out which file they belong to!
  **/
 
-export {default as Navbar} from './navbar'
-export {default as Home} from './home'
-export {default as Hello} from './hello'
-export {Login, Signup} from './auth-form'
+export {default as Navbar} from './Navbar'
+export {default as Home} from './Home'
+export {default as Hello} from './Hello'
+export {Login, Signup} from './AuthForm'

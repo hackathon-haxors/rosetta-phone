@@ -5,7 +5,7 @@ import {Provider} from 'react-redux'
 
 import history from './history'
 import store from './store'
-import App from './app'
+import App from './App'
 
 // Establishes Socket connection
 import './socket'

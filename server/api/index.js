@@ -1,6 +1,7 @@
+// Imports
 const router = require('express').Router()
-module.exports = router
 
+// Middleware
 router.use('/users', require('./users'))
 
 router.use((req, res, next) => {
@@ -8,3 +9,6 @@ router.use((req, res, next) => {
   error.status = 404
   next(error)
 })
+
+// Exports
+module.exports = router

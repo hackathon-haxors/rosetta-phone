@@ -1,20 +1,23 @@
 // Imports
 const router = require('express').Router()
 
+// Models
 const {User} = require('../db/models')
 
 // Routes
-router.get('/', async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
+  const {userId} = req.params
+
   try {
-    const users = await User.findAll({
-      // Explicitly select only the id and email fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
-      attributes: ['id', 'email']
+    const user = await User.findByPk(userId, {
+      // Explicitly select only the id, googleId, firstName, lastName,
+      // and email fields - even though users' passwords are encrypted,
+      // it won't help if we just send everything to anyone who asks!
+      attributes: ['id', 'googleId', 'firstName', 'lastName', 'email']
     })
-    res.json(users)
-  } catch (err) {
-    next(err)
+    res.json(user)
+  } catch (error) {
+    next(error)
   }
 })
 

@@ -2,40 +2,59 @@
 import axios from 'axios'
 
 import history from '../history'
+import {toggledPreloaderActionCreator} from './layoutReducer'
 
 // Action Types
-const GET_USER = 'GET_USER'
-const REMOVE_USER = 'REMOVE_USER'
+const GOT_USER = 'GOT_USER'
+const REMOVED_USER = 'REMOVED_USER'
 
 // Initial State
 const initialState = {}
 
 // Action Creators
-const getUser = user => ({type: GET_USER, user})
-const removeUser = () => ({type: REMOVE_USER})
+export const gotUserActionCreator = user => ({type: GOT_USER, user})
+export const removedUserActionCreator = () => ({type: REMOVED_USER})
 
 // Thunk Creators
 export const me = () => async dispatch => {
   try {
-    const res = await axios.get('/auth/me')
+    dispatch(toggledPreloaderActionCreator(true))
 
-    dispatch(getUser(res.data || initialState))
-  } catch (err) {
-    console.error(err)
+    const {data} = await axios.get('/auth/me')
+
+    dispatch(gotUserActionCreator(data || initialState))
+    dispatch(toggledPreloaderActionCreator(false))
+  } catch (error) {
+    console.error(error)
   }
 }
 
-export const auth = (email, password, method) => async dispatch => {
+export const auth = (
+  method,
+  email,
+  password,
+  firstName,
+  lastName
+) => async dispatch => {
   let res
 
   try {
-    res = await axios.post(`/auth/${method}`, {email, password})
+    dispatch(toggledPreloaderActionCreator(true))
+
+    res = await axios.post(`/auth/${method}`, {
+      firstName,
+      lastName,
+      email,
+      password
+    })
   } catch (authError) {
-    return dispatch(getUser({error: authError}))
+    dispatch(toggledPreloaderActionCreator(false))
+    return dispatch(gotUserActionCreator({error: authError}))
   }
 
   try {
-    dispatch(getUser(res.data))
+    dispatch(gotUserActionCreator(res.data))
+    dispatch(toggledPreloaderActionCreator(false))
     history.push('/home')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
@@ -44,25 +63,30 @@ export const auth = (email, password, method) => async dispatch => {
 
 export const logout = () => async dispatch => {
   try {
+    dispatch(toggledPreloaderActionCreator(true))
+
     await axios.post('/auth/logout')
 
-    dispatch(removeUser())
+    dispatch(removedUserActionCreator())
+    dispatch(toggledPreloaderActionCreator(false))
     history.push('/login')
-  } catch (err) {
-    console.error(err)
+  } catch (error) {
+    console.error(error)
   }
 }
 
 // Reducer
-export const userReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER:
+    case GOT_USER:
       return action.user
 
-    case REMOVE_USER:
+    case REMOVED_USER:
       return initialState
 
     default:
       return state
   }
 }
+
+export default userReducer

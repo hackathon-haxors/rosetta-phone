@@ -1,17 +1,31 @@
 'use strict'
 
+// Imports
 const {red, green} = require('chalk')
 
 const db = require('../server/db')
+
+// Models
 const {User} = require('../server/db/models')
 
+// Initializations
 async function seed() {
   await db.sync({force: true})
   console.log('Database is synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({
+      firstName: 'Cody',
+      lastName: 'DaPug',
+      email: 'cody@email.com',
+      password: '123'
+    }),
+    User.create({
+      firstName: 'Murphy',
+      lastName: 'DaPug',
+      email: 'murphy@email.com',
+      password: '123'
+    })
   ])
 
   console.log(`Seeded ${users.length} Users`)
@@ -25,9 +39,9 @@ async function runSeed() {
   console.log('Seeding...')
   try {
     await seed()
-  } catch (err) {
+  } catch (error) {
     console.error(red('Oh no! Something went wrong!'))
-    console.error(err)
+    console.error(error)
     process.exitCode = 1
   } finally {
     console.log('Closing database connection...')
@@ -43,5 +57,6 @@ if (module === require.main) {
   runSeed()
 }
 
+// Exports
 // We export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed

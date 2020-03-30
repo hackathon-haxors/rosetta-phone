@@ -10,14 +10,14 @@ import {Hello} from './Hello'
 const adapter = new Adapter()
 enzyme.configure({adapter})
 
-describe('UserHome', () => {
+describe('Hello', () => {
   let hello
 
   beforeEach(() => {
-    hello = shallow(<Hello email="cody@email.com" />)
+    hello = shallow(<Hello firstName="Cody" />)
   })
 
-  it('renders the email handle in a span', () => {
-    expect(hello.find('span').text()).to.be.equal('Hello, cody.')
+  it('renders the first name in a span', () => {
+    expect(hello.find('span').text()).to.be.equal('Hello, Cody.')
   })
 })

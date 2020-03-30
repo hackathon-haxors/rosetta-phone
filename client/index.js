@@ -1,3 +1,4 @@
+// Imports
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Router} from 'react-router-dom'
@@ -10,6 +11,7 @@ import App from './App'
 // Establishes Socket connection
 import './socket'
 
+// Initializations
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>

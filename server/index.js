@@ -1,16 +1,20 @@
-const path = require('path')
+// Imports
 const express = require('express')
+const path = require('path')
 const morgan = require('morgan')
 const compression = require('compression')
-const session = require('express-session')
 const passport = require('passport')
-const SequelizeStore = require('connect-session-sequelize')(session.Store)
-const db = require('./db')
-const sessionStore = new SequelizeStore({db})
-const PORT = process.env.PORT || 1337
-const app = express()
+const session = require('express-session')
 const socketio = require('socket.io')
 const {blueBright, magenta, yellow} = require('chalk')
+
+const db = require('./db')
+
+// Initializations
+const app = express()
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const sessionStore = new SequelizeStore({db})
+const PORT = process.env.PORT || 1337
 
 // This is a global Mocha hook, used for resource cleanup.
 // Otherwise, Mocha v4+ never quits after tests.
@@ -35,8 +39,8 @@ passport.deserializeUser(async (id, done) => {
   try {
     const user = await db.models.user.findByPk(id)
     done(null, user)
-  } catch (err) {
-    done(err)
+  } catch (error) {
+    done(error)
   }
 })
 
@@ -73,9 +77,9 @@ const createApp = () => {
   // Any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
-      const err = new Error('Not found')
-      err.status = 404
-      next(err)
+      const error = new Error('Not found')
+      error.status = 404
+      next(error)
     } else {
       next()
     }
@@ -87,14 +91,14 @@ const createApp = () => {
   })
 
   // Custom error handling
-  app.use((err, req, res, next) => {
+  app.use((error, req, res, next) => {
     // Just in case
-    if (!err.stack || !err.message) {
-      next(err)
+    if (!error.stack || !error.message) {
+      next(error)
     }
 
     // Clean up the trace to just relevant info
-    const cleanTrace = err.stack
+    const cleanTrace = error.stack
       .split('\n')
       .filter(line => {
         // Comment out the next two lines for full (verbose) stack traces
@@ -107,14 +111,16 @@ const createApp = () => {
     // Colorize and format the output
     console.log(
       magenta(`
-    >>>>> Error: ${err.message} <<<<<
+    >>>>> Error: ${error.message} <<<<<
 
 ${yellow(cleanTrace)}
     `)
     )
 
     // Send back error status
-    res.status(err.status || 500).send(err.message || 'Internal server error.')
+    res
+      .status(error.status || 500)
+      .send(error.message || 'Internal server error.')
   })
 }
 
@@ -143,6 +149,7 @@ async function bootApp() {
   await createApp()
   await startListening()
 }
+
 // This evaluates as true when this file is run directly from the command line,
 // i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
 // It will evaluate false when this module is required by another module - for example,
@@ -153,4 +160,5 @@ if (require.main === module) {
   createApp()
 }
 
+// Exports
 module.exports = app

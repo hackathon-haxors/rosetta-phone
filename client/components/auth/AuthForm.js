@@ -3,7 +3,7 @@ import React, {Fragment, useState} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import {auth} from '../store'
+import {auth} from '../../store'
 
 // Component
 const AuthForm = ({name, displayName, error, authThunk}) => {
@@ -137,13 +137,13 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
 
         {error &&
           error.response && (
-            <div className="text-color-red">{`Error! ${
-              error.response.data
-            }.`}</div>
+            <div className="text-style-bold text-color-red">
+              {`Error! ${error.response.data}.`}
+            </div>
           )}
 
         {passwordValidationError && (
-          <div className="text-color-red">
+          <div className="text-style-bold text-color-red">
             Error! Please re-enter your password.
           </div>
         )}

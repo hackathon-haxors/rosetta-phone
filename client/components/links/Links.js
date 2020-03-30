@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Hello from './Hello'
-import {logout} from '../store'
+import Hello from '../navbar/Hello'
+import {logout} from '../../store'
 
 // Component
 const Links = ({isLoggedIn, handleClick}) => {

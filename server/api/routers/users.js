@@ -2,7 +2,7 @@
 const router = require('express').Router()
 
 // Models
-const {User} = require('../db/models')
+const {User} = require('../../db/models')
 
 // Routes
 router.get('/:userId', async (req, res, next) => {

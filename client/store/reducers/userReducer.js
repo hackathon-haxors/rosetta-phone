@@ -1,7 +1,7 @@
 // Imports
 import axios from 'axios'
 
-import history from '../history'
+import history from '../../history'
 import {toggledPreloaderActionCreator} from './layoutReducer'
 
 // Action Types

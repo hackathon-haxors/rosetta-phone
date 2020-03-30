@@ -4,8 +4,8 @@ import thunkMiddleware from 'redux-thunk'
 import {createLogger} from 'redux-logger'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
-import userReducer from './userReducer'
-import layoutReducer from './layoutReducer'
+import userReducer from './reducers/userReducer'
+import layoutReducer from './reducers/layoutReducer'
 
 // Initializations
 const reducer = combineReducers({
@@ -19,4 +19,4 @@ const store = createStore(reducer, middleware)
 
 // Exports
 export default store
-export * from './userReducer'
+export * from './reducers/userReducer'

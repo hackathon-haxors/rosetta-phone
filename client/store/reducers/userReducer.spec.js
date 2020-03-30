@@ -6,7 +6,7 @@ import thunkMiddleware from 'redux-thunk'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-import history from '../history'
+import history from '../../history'
 import {me, logout} from './userReducer'
 
 const middlewares = [thunkMiddleware]

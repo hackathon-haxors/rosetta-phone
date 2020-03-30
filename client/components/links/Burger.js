@@ -1,6 +1,6 @@
 // Imports
 import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -54,9 +54,9 @@ const Burger = ({isLoggedIn, handleClick}) => {
               <Hello color="white" onClick={event => event.stopPropagation()} />
 
               {/* The navbar will show these links after you log in */}
-              <Link className="burger-link text-color-white" to="/home">
+              <NavLink to="/home" className="burger-link text-color-white">
                 Home
-              </Link>
+              </NavLink>
 
               <a
                 className="burger-link text-color-white"
@@ -89,13 +89,13 @@ const Burger = ({isLoggedIn, handleClick}) => {
                 Source
               </a>
 
-              <Link className="burger-link text-color-white" to="/login">
+              <NavLink to="/login" className="burger-link text-color-white">
                 Login
-              </Link>
+              </NavLink>
 
-              <Link className="burger-link text-color-white" to="/signup">
+              <NavLink to="/signup" className="burger-link text-color-white">
                 Signup
-              </Link>
+              </NavLink>
             </div>
           )}
         </nav>

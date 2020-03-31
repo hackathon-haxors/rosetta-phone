@@ -36,7 +36,7 @@ const Navbar = ({isLoading}) => {
       <div className="navbar-container">
         <NavLink to="/home" className="navbar-logo-navlink">
           <h2 className="navbar-logo-containee">
-            {largeViewCheck ? 'Boilermaker' : 'BMaker'}
+            {largeViewCheck ? 'Meetup Tracker' : 'MTracker'}
           </h2>
         </NavLink>
 

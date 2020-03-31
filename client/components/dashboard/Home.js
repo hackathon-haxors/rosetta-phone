@@ -7,9 +7,7 @@ import PropTypes from 'prop-types'
 const Home = ({firstName}) => {
   return (
     <div className="center">
-      <h4>{`Welcome to Boilermaker, ${firstName}.`}</h4>
-
-      <div className="home-message">PLACEHOLDER</div>
+      <h4>{`Welcome to Meetup Tracker, ${firstName}.`}</h4>
     </div>
   )
 }

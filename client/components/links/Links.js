@@ -17,13 +17,13 @@ const Links = ({isLoggedIn, handleClick}) => {
             <Hello className="links-nav-containee" color="gray" />
 
             {/* The navbar will show these links after you log in */}
-            <NavLink to="/home" className="links-nav-containee">
+            <NavLink to="/" className="links-nav-containee">
               Home
             </NavLink>
 
             <a
               className="links-nav-containee"
-              href="https://github.com/LuigiLegion/boilermaker"
+              href="https://github.com/LuigiLegion/meetup-tracker"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -39,9 +39,13 @@ const Links = ({isLoggedIn, handleClick}) => {
             {/* The navbar will show these links before you log in */}
             <Hello className="links-nav-containee" color="gray" />
 
+            <NavLink to="/" className="links-nav-containee">
+              Home
+            </NavLink>
+
             <a
               className="links-nav-containee"
-              href="https://github.com/LuigiLegion/boilermaker"
+              href="https://github.com/LuigiLegion/meetup-tracker"
               target="_blank"
               rel="noopener noreferrer"
             >

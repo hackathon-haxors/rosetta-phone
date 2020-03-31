@@ -34,10 +34,10 @@ const Navbar = ({isLoading}) => {
   return (
     <Fragment>
       <div className="navbar-container">
-        <NavLink to="/home" className="navbar-logo-navlink">
-          <h2 className="navbar-logo-containee">
+        <NavLink to="/" className="navbar-logo-navlink">
+          <span className="text-style-bold navbar-logo navbar-logo-containee">
             {largeViewCheck ? 'Meetup Tracker' : 'MTracker'}
-          </h2>
+          </span>
         </NavLink>
 
         {largeViewCheck ? <Links /> : <Burger />}

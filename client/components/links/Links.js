@@ -1,6 +1,6 @@
 // Imports
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -17,9 +17,9 @@ const Links = ({isLoggedIn, handleClick}) => {
             <Hello className="links-nav-containee" color="gray" />
 
             {/* The navbar will show these links after you log in */}
-            <Link className="links-nav-containee" to="/home">
+            <NavLink to="/home" className="links-nav-containee">
               Home
-            </Link>
+            </NavLink>
 
             <a
               className="links-nav-containee"
@@ -48,13 +48,13 @@ const Links = ({isLoggedIn, handleClick}) => {
               Source
             </a>
 
-            <Link className="links-nav-containee" to="/login">
+            <NavLink to="/login" className="links-nav-containee">
               Login
-            </Link>
+            </NavLink>
 
-            <Link className="links-nav-containee" to="/signup">
+            <NavLink to="/signup" className="links-nav-containee">
               Signup
-            </Link>
+            </NavLink>
           </div>
         )}
       </nav>

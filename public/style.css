@@ -49,7 +49,7 @@ input[type='text']:not(.browser-default):focus:not([readonly]),
 input[type='email']:not(.browser-default):focus:not([readonly]),
 input[type='password']:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-color: #424242;
+  border-color: #26a69a;
   box-shadow: none;
 }
 
@@ -57,6 +57,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
   text-align: center;
   margin: auto;
   width: 50%;
+}
+
+@media screen and (max-width: 1007px) {
+  form.center {
+    margin: 0px;
+    width: 100%;
+  }
 }
 
 .left {
@@ -180,8 +187,13 @@ textarea.materialize-textarea:focus:not([readonly]) {
   flex-direction: column;
   position: absolute;
   background: #424242;
-  min-width: 16vw;
+  min-width: 33vw;
   z-index: 1;
+}
+
+.burger-link {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .burger-link:hover {

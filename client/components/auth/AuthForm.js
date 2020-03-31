@@ -149,7 +149,7 @@ const AuthForm = ({name, displayName, error, authThunk}) => {
         )}
       </form>
 
-      <div className="center google-oauth">
+      <div className="google-oauth">
         <a href="/auth/google">{displayName} with Google</a>
       </div>
     </div>

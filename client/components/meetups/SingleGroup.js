@@ -12,16 +12,9 @@ const SingleGroup = ({name, meetups}) => {
           <span className="card-title text-style-bold">{name}</span>
 
           {!meetups.length ? (
-            <div className="message-container">
-              <div className="message-containee">
-                No upcoming meetups were found.
-              </div>
-
-              <br />
-              <br />
-            </div>
+            <div>No upcoming meetups were found.</div>
           ) : (
-            <ul className="notifications">
+            <ul>
               {meetups.map(curEvent => (
                 <li key={curEvent.id}>
                   <span className="text-style-bold text-color-red">
@@ -29,14 +22,14 @@ const SingleGroup = ({name, meetups}) => {
                   </span>
 
                   <div>
-                    {curEvent.venue
+                    {curEvent.venue.address_1 && curEvent.venue.city
                       ? `${curEvent.venue.address_1}, ${curEvent.venue.city}`
                       : 'TBD'}
                   </div>
 
-                  <div className="events-time-and-rsvp-container">
+                  <div>
                     <div
-                      className="grey-text note-date events-time-and-rsvp-containee"
+                      className="grey-text"
                       title={moment(curEvent.time).format('LLLL')}
                     >
                       {moment(curEvent.time).fromNow()}
@@ -55,8 +48,6 @@ const SingleGroup = ({name, meetups}) => {
                       </span>
                     </a>
                   </div>
-
-                  <br />
                 </li>
               ))}
             </ul>

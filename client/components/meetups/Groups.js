@@ -23,9 +23,7 @@ const Groups = ({curatedMeetups, fetchedMeetups, getCuratedMeetupsThunk}) => {
         <div className="section center">
           <div className="card">
             <div className="card-content grey-text text-darken-3">
-              <div className="message-container">
-                <div className="message-containee">Loading meetups...</div>
-              </div>
+              Loading meetups...
             </div>
           </div>
         </div>
@@ -35,11 +33,7 @@ const Groups = ({curatedMeetups, fetchedMeetups, getCuratedMeetupsThunk}) => {
             <div className="section center">
               <div className="card">
                 <div className="card-content grey-text text-darken-3">
-                  <div className="message-container">
-                    <div className="message-containee">
-                      No upcoming meetups were found.
-                    </div>
-                  </div>
+                  No upcoming meetups were found.
                 </div>
               </div>
             </div>

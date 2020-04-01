@@ -19,17 +19,17 @@ const Routes = ({loadInitialData, isLoggedIn}) => {
   return (
     <Switch>
       {/* Routes placed here are available to all visitors */}
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={Signup} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/signup" component={Signup} />
       {isLoggedIn && (
         <Switch>
           {/* Routes placed here are only available after logging in */}
-          <Route path="/home" component={Home} />
           <Route path="/:wildcard" component={PageNotFound} />
         </Switch>
       )}
-      {/* Displays our Login component as a fallback */}
-      <Route component={Login} />
+      {/* Displays our Home component as a fallback */}
+      <Route component={Home} />
     </Switch>
   )
 }
@@ -53,6 +53,6 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Routes))
 
 // Prop Types
 Routes.propTypes = {
-  loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  loadInitialData: PropTypes.func.isRequired
 }

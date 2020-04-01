@@ -10,11 +10,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: #eaeaea;
+  background: #fafafa;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #424242;
+  background: #f64060;
 }
 
 a {
@@ -28,7 +28,13 @@ nav a {
 }
 
 a:hover {
+  color: #f64060;
   background: #eaeaea;
+  text-decoration: underline;
+}
+
+a.events-time-and-rsvp-link:hover {
+  background: transparent;
   text-decoration: underline;
 }
 
@@ -49,7 +55,7 @@ input[type='text']:not(.browser-default):focus:not([readonly]),
 input[type='email']:not(.browser-default):focus:not([readonly]),
 input[type='password']:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-color: #26a69a;
+  border-color: #f64060;
   box-shadow: none;
 }
 
@@ -75,11 +81,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .text-color-blue {
-  color: #357da7;
+  color: #0098ab;
 }
 
 .text-color-red {
-  color: #e57373;
+  color: #f64060;
 }
 
 .text-color-gray {
@@ -105,7 +111,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .navbar-logo-containee {
@@ -113,13 +120,21 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin: 0;
 }
 
-.navbar-logo-navlink {
-  padding: 0;
+.navbar-logo {
+  color: #424242;
+  font-size: xx-large;
 }
 
 .navbar-logo-navlink:hover {
+  color: #424242;
   background: none;
   text-decoration: none;
+}
+
+@media screen and (max-width: 1007px) {
+  .navbar-logo-navlink {
+    padding-left: 0em;
+  }
 }
 
 .navbar-links-containee {
@@ -136,7 +151,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background: #eaeaea;
+  background: #ffffff;
   padding: 1em 0em;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
@@ -186,8 +201,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
   display: flex;
   flex-direction: column;
   position: absolute;
-  background: #424242;
+  background: #f64060;
   min-width: 33vw;
+  border-radius: 5px;
   z-index: 1;
 }
 
@@ -197,7 +213,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .burger-link:hover {
-  background: #616161;
+  color: #fafafa;
+  background: #eb6880;
 }
 
 .burger-close {
@@ -234,7 +251,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .progress .indeterminate.preloader-outer-color {
-  background-color: #424242;
+  background-color: #f64060;
 }
 
 .links-nav {

@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Hello from '../navbar/Hello'
+import {Hello} from '../index'
 import {logout} from '../../store'
 
 // Component
@@ -54,13 +54,13 @@ const Burger = ({isLoggedIn, handleClick}) => {
               <Hello color="white" onClick={event => event.stopPropagation()} />
 
               {/* The navbar will show these links after you log in */}
-              <NavLink to="/home" className="burger-link text-color-white">
+              <NavLink to="/" className="burger-link text-color-white">
                 Home
               </NavLink>
 
               <a
                 className="burger-link text-color-white"
-                href="https://github.com/LuigiLegion/boilermaker"
+                href="https://github.com/LuigiLegion/meetup-tracker"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -80,9 +80,13 @@ const Burger = ({isLoggedIn, handleClick}) => {
               {/* The navbar will show these links before you log in */}
               <Hello color="white" onClick={event => event.stopPropagation()} />
 
+              <NavLink to="/" className="burger-link text-color-white">
+                Home
+              </NavLink>
+
               <a
                 className="burger-link text-color-white"
-                href="https://github.com/LuigiLegion/boilermaker"
+                href="https://github.com/LuigiLegion/meetup-tracker"
                 target="_blank"
                 rel="noopener noreferrer"
               >

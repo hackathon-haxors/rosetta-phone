@@ -10,7 +10,7 @@ const PageNotFound = () => {
 
       <div className="page-not-found-message">This route does not exist.</div>
 
-      <NavLink to="/home">
+      <NavLink to="/">
         <span className="bold-text-style">← Back To Home</span>
       </NavLink>
     </div>

@@ -4,9 +4,7 @@ import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Links from '../links/Links'
-import Burger from '../links/Burger'
-import Preloader from './Preloader'
+import {Links, Burger, Preloader} from '../index'
 
 // Component
 const Navbar = ({isLoading}) => {
@@ -34,10 +32,10 @@ const Navbar = ({isLoading}) => {
   return (
     <Fragment>
       <div className="navbar-container">
-        <NavLink to="/home" className="navbar-logo-navlink">
-          <h2 className="navbar-logo-containee">
-            {largeViewCheck ? 'Boilermaker' : 'BMaker'}
-          </h2>
+        <NavLink to="/" className="navbar-logo-navlink">
+          <span className="text-style-bold navbar-logo navbar-logo-containee">
+            {largeViewCheck ? 'Meetup Tracker' : 'MTracker'}
+          </span>
         </NavLink>
 
         {largeViewCheck ? <Links /> : <Burger />}

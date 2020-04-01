@@ -277,3 +277,12 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .links-nav-containee:hover {
   background: transparent;
 }
+
+.author-link {
+  padding: 0em;
+}
+
+.author-link:hover {
+  color: #0098ab;
+  background: none;
+}

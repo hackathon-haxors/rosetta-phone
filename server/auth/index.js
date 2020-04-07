@@ -5,7 +5,7 @@ const router = require('express').Router()
 const {User} = require('../db/models')
 
 // Middleware
-router.use('/google', require('./google'))
+router.use('/meetup', require('./meetup'))
 
 // Routes
 router.get('/me', (req, res) => {

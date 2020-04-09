@@ -93,13 +93,13 @@ const Burger = ({isLoggedIn, handleClick}) => {
                 Source
               </a>
 
-              <NavLink to="/login" className="burger-link text-color-white">
+              <a className="burger-link text-color-white" href="/auth/meetup">
                 Login
-              </NavLink>
+              </a>
 
-              <NavLink to="/signup" className="burger-link text-color-white">
+              <a className="burger-link text-color-white" href="/auth/meetup">
                 Signup
-              </NavLink>
+              </a>
             </div>
           )}
         </nav>

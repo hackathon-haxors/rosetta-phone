@@ -29,8 +29,6 @@ if (!process.env.MEETUP_CLIENT_ID || !process.env.MEETUP_CLIENT_SECRET) {
     callbackURL: process.env.MEETUP_CALLBACK
   }
 
-  console.log({meetupConfig})
-
   const strategy = new MeetupStrategy(
     meetupConfig,
     (token, refreshToken, profile, done) => {
@@ -57,7 +55,7 @@ if (!process.env.MEETUP_CLIENT_ID || !process.env.MEETUP_CLIENT_SECRET) {
     '/callback',
     passport.authenticate('meetup', {
       successRedirect: '/',
-      failureRedirect: '/login'
+      failureRedirect: '/'
     })
   )
 }

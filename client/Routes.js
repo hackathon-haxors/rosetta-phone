@@ -4,7 +4,7 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import {Login, Signup, Home, PageNotFound} from './components'
+import {Home, PageNotFound} from './components'
 import {me} from './store'
 
 // Component
@@ -20,8 +20,6 @@ const Routes = ({loadInitialData, isLoggedIn}) => {
     <Switch>
       {/* Routes placed here are available to all visitors */}
       <Route exact path="/" component={Home} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
       {isLoggedIn && (
         <Switch>
           {/* Routes placed here are only available after logging in */}

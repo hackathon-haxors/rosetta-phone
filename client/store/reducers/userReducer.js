@@ -25,40 +25,12 @@ export const me = () => async dispatch => {
   }
 }
 
-export const auth = (
-  method,
-  email,
-  password,
-  firstName,
-  lastName
-) => async dispatch => {
-  let res
-
-  try {
-    res = await axios.post(`/auth/${method}`, {
-      firstName,
-      lastName,
-      email,
-      password
-    })
-  } catch (authError) {
-    return dispatch(gotUserActionCreator({error: authError}))
-  }
-
-  try {
-    dispatch(gotUserActionCreator(res.data))
-    history.push('/')
-  } catch (dispatchOrHistoryErr) {
-    console.error(dispatchOrHistoryErr)
-  }
-}
-
 export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
 
     dispatch(removedUserActionCreator())
-    history.push('/login')
+    history.push('/')
   } catch (error) {
     console.error(error)
   }

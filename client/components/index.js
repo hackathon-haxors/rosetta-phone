@@ -6,7 +6,6 @@
  **/
 
 export {default as PageNotFound} from './404/PageNotFound'
-export {Login, Signup} from './auth/AuthForm'
 export {default as Home} from './dashboard/Home'
 export {default as Burger} from './links/Burger'
 export {default as Links} from './links/Links'

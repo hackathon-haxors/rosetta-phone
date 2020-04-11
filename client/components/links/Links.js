@@ -52,13 +52,13 @@ const Links = ({isLoggedIn, handleClick}) => {
               Source
             </a>
 
-            <NavLink to="/login" className="links-nav-containee">
+            <a className="links-nav-containee" href="/auth/meetup">
               Login
-            </NavLink>
+            </a>
 
-            <NavLink to="/signup" className="links-nav-containee">
+            <a className="links-nav-containee" href="/auth/meetup">
               Signup
-            </NavLink>
+            </a>
           </div>
         )}
       </nav>

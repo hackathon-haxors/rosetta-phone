@@ -3,8 +3,8 @@ export const burgerStyles = {
     position: 'fixed',
     width: '36px',
     height: '30px',
-    right: '14px',
-    top: '14px'
+    right: '1.625em',
+    top: '1.625em'
   },
   bmBurgerBars: {
     background: '#f64060'

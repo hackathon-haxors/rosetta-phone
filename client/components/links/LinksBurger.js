@@ -10,7 +10,7 @@ import {logout} from '../../store'
 import {burgerStyles} from '../../styles'
 
 // Component
-const LinksBurger = () => {
+const LinksBurger = ({isLoggedIn, handleClick}) => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const handleStateChange = state => {
@@ -29,29 +29,73 @@ const LinksBurger = () => {
       width="50%"
       onStateChange={state => handleStateChange(state)}
     >
-      <div className="remove-outline">
-        <div>
-          <Hello color="white" />
-        </div>
+      {menuOpen && (
+        <div className="remove-outline">
+          {isLoggedIn ? (
+            <Fragment>
+              <div>
+                <Hello color="white" />
+              </div>
 
-        <div>
-          <NavLink to="/" onClick={closeMenu}>
-            <span className="navbar-text-color">Home</span>
-          </NavLink>
-        </div>
+              <div>
+                <NavLink to="/" onClick={closeMenu}>
+                  <span className="navbar-text-color">Home</span>
+                </NavLink>
+              </div>
 
-        <div>
-          <a href="/auth/meetup">
-            <span className="navbar-text-color">Login</span>
-          </a>
-        </div>
+              <div>
+                <a
+                  href="https://github.com/LuigiLegion/meetup-tracker"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="navbar-text-color">Source</span>
+                </a>
+              </div>
 
-        <div>
-          <a href="/auth/meetup">
-            <span className="navbar-text-color">Signup</span>
-          </a>
+              <div>
+                <a href="#" onClick={handleClick}>
+                  <span className="navbar-text-color">Logout</span>
+                </a>
+              </div>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <div>
+                <Hello color="white" />
+              </div>
+
+              <div>
+                <NavLink to="/" onClick={closeMenu}>
+                  <span className="navbar-text-color">Home</span>
+                </NavLink>
+              </div>
+
+              <div>
+                <a
+                  href="https://github.com/LuigiLegion/meetup-tracker"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="navbar-text-color">Source</span>
+                </a>
+              </div>
+
+              <div>
+                <a href="/auth/meetup">
+                  <span className="navbar-text-color">Login</span>
+                </a>
+              </div>
+
+              <div>
+                <a href="/auth/meetup">
+                  <span className="navbar-text-color">Signup</span>
+                </a>
+              </div>
+            </Fragment>
+          )}
         </div>
-      </div>
+      )}
     </Menu>
   )
 }

@@ -22,7 +22,9 @@ const SingleGroup = ({name, meetups}) => {
                   </span>
 
                   <div>
-                    {curEvent.venue.address_1 && curEvent.venue.city
+                    {curEvent.venue &&
+                    curEvent.venue.address_1 &&
+                    curEvent.venue.city
                       ? `${curEvent.venue.address_1}, ${curEvent.venue.city}`
                       : 'TBD'}
                   </div>

@@ -34,7 +34,7 @@ const SingleGroup = ({name, meetups}) => {
                       className="grey-text"
                       title={moment(curEvent.time).format('LLLL')}
                     >
-                      {moment(curEvent.time).fromNow()}
+                      {`Takes place ${moment(curEvent.time).fromNow()}`}
                     </div>
 
                     <a

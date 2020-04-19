@@ -7,8 +7,8 @@
 
 export {default as PageNotFound} from './404/PageNotFound'
 export {default as Home} from './dashboard/Home'
-export {default as Burger} from './links/Burger'
 export {default as Links} from './links/Links'
+export {default as LinksBurger} from './links/LinksBurger'
 export {default as Groups} from './meetups/Groups'
 export {default as SingleGroup} from './meetups/SingleGroup'
 export {default as Hello} from './navbar/Hello'

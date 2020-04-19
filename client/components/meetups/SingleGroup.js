@@ -15,35 +15,37 @@ const SingleGroup = ({name, meetups}) => {
             <div>No upcoming meetups were found.</div>
           ) : (
             <ul>
-              {meetups.map(curEvent => (
-                <li key={curEvent.id}>
+              {meetups.map(curMeetup => (
+                <li key={curMeetup.id}>
                   <span className="text-style-bold text-color-red">
-                    {`${curEvent.name} `}
+                    {`${curMeetup.name} `}
                   </span>
 
                   <div>
-                    {curEvent.venue.address_1 && curEvent.venue.city
-                      ? `${curEvent.venue.address_1}, ${curEvent.venue.city}`
+                    {curMeetup.venue &&
+                    curMeetup.venue.address_1 &&
+                    curMeetup.venue.city
+                      ? `${curMeetup.venue.address_1}, ${curMeetup.venue.city}`
                       : 'TBD'}
                   </div>
 
                   <div>
                     <div
                       className="grey-text"
-                      title={moment(curEvent.time).format('LLLL')}
+                      title={moment(curMeetup.time).format('LLLL')}
                     >
-                      {moment(curEvent.time).fromNow()}
+                      {`Takes place ${moment(curMeetup.time).fromNow()}`}
                     </div>
 
                     <a
-                      className="events-time-and-rsvp-link"
-                      href={curEvent.event_url}
+                      className="meetup-time-and-rsvp-link"
+                      href={curMeetup.event_url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <span className="right text-color-blue">
-                        {`RSVP (${curEvent.yes_rsvp_count}${
-                          curEvent.rsvp_limit ? '/' + curEvent.rsvp_limit : ''
+                        {`RSVP (${curMeetup.yes_rsvp_count}${
+                          curMeetup.rsvp_limit ? '/' + curMeetup.rsvp_limit : ''
                         })`}
                       </span>
                     </a>

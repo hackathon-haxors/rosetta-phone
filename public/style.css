@@ -33,7 +33,7 @@ a:hover {
   text-decoration: underline;
 }
 
-a.events-time-and-rsvp-link:hover {
+a.meetup-time-and-rsvp-link:hover {
   background: transparent;
   text-decoration: underline;
 }
@@ -169,42 +169,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin-top: 2em;
 }
 
-.burger-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-  right: 0;
-  top: 0;
-  height: 100%;
-}
-
-.burger-containee {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-start;
-  position: relative;
-  right: 0px;
-  top: 0px;
-  cursor: pointer;
-}
-
-.burger-caret {
-  position: relative;
-  top: 0;
-}
-
-.burger-links {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  background: #f64060;
-  min-width: 33vw;
-  border-radius: 5px;
-  z-index: 1;
+.burger-text-color {
+  color: #fafafa;
 }
 
 .burger-link {
@@ -214,17 +180,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .burger-link:hover {
   color: #fafafa;
-  background: #eb6880;
-}
-
-.burger-close {
-  transform: rotate(180deg);
-  transition: all 0.25s ease-out;
-}
-
-.burger-open {
-  transform: rotate(0);
-  transition: all 0.25s ease-out;
+  background: #f64060;
 }
 
 .home-message {

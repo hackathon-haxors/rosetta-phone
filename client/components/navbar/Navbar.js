@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import {Links, Burger, Preloader} from '../index'
+import {Links, LinksBurger, Preloader} from '../index'
 
 // Component
 const Navbar = ({isLoading}) => {
@@ -31,6 +31,8 @@ const Navbar = ({isLoading}) => {
 
   return (
     <Fragment>
+      {!largeViewCheck && <LinksBurger />}
+
       <div className="navbar-container">
         <NavLink to="/" className="navbar-logo-navlink">
           <span className="text-style-bold navbar-logo navbar-logo-containee">
@@ -38,10 +40,10 @@ const Navbar = ({isLoading}) => {
           </span>
         </NavLink>
 
-        {largeViewCheck ? <Links /> : <Burger />}
+        {largeViewCheck && <Links />}
       </div>
 
-      <div>{isLoading ? <Preloader /> : null}</div>
+      <div>{isLoading && <Preloader />}</div>
     </Fragment>
   )
 }

@@ -207,6 +207,10 @@ textarea.materialize-textarea:focus:not([readonly]) {
   z-index: 1;
 }
 
+.burger-text-color {
+  color: #fafafa;
+}
+
 .burger-link {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -214,7 +218,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .burger-link:hover {
   color: #fafafa;
-  background: #eb6880;
+  background: #f64060;
 }
 
 .burger-close {

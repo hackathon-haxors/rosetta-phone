@@ -38,24 +38,25 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
               </div>
 
               <div>
-                <NavLink to="/" onClick={closeMenu}>
-                  <span className="navbar-text-color">Home</span>
+                <NavLink to="/" className="burger-link" onClick={closeMenu}>
+                  <span className="burger-text-color">Home</span>
                 </NavLink>
               </div>
 
               <div>
                 <a
+                  className="burger-link"
                   href="https://github.com/LuigiLegion/meetup-tracker"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="navbar-text-color">Source</span>
+                  <span className="burger-text-color">Source</span>
                 </a>
               </div>
 
               <div>
-                <a href="#" onClick={handleClick}>
-                  <span className="navbar-text-color">Logout</span>
+                <a className="burger-link" href="#" onClick={handleClick}>
+                  <span className="burger-text-color">Logout</span>
                 </a>
               </div>
             </Fragment>
@@ -66,30 +67,31 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
               </div>
 
               <div>
-                <NavLink to="/" onClick={closeMenu}>
-                  <span className="navbar-text-color">Home</span>
+                <NavLink to="/" className="burger-link" onClick={closeMenu}>
+                  <span className="burger-text-color">Home</span>
                 </NavLink>
               </div>
 
               <div>
                 <a
+                  className="burger-link"
                   href="https://github.com/LuigiLegion/meetup-tracker"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="navbar-text-color">Source</span>
+                  <span className="burger-text-color">Source</span>
                 </a>
               </div>
 
               <div>
-                <a href="/auth/meetup">
-                  <span className="navbar-text-color">Login</span>
+                <a className="burger-link" href="/auth/meetup">
+                  <span className="burger-text-color">Login</span>
                 </a>
               </div>
 
               <div>
-                <a href="/auth/meetup">
-                  <span className="navbar-text-color">Signup</span>
+                <a className="burger-link" href="/auth/meetup">
+                  <span className="burger-text-color">Signup</span>
                 </a>
               </div>
             </Fragment>

@@ -64,18 +64,18 @@ createdb $MY_APP_NAME-test
   * It might look like this:
 
 ```
-process.env.MEETUP_CLIENT_ID = 'hush hush'
-process.env.MEETUP_CLIENT_SECRET = 'pretty secret'
-process.env.MEETUP_CALLBACK = '/auth/meetup/callback'
+process.env.GOOGLE_CLIENT_ID = 'hush hush'
+process.env.GOOGLE_CLIENT_SECRET = 'pretty secret'
+process.env.GOOGLE_CALLBACK = '/auth/google/callback'
 ```
 
 ### OAuth
 
-* To use OAuth with Meetup, complete the steps above with a real client
-  ID and client secret supplied from Meetup
-  * You can get them from the [Meetup APIs dashboard][meetup-apis].
+* To use OAuth with Google, complete the steps above with a real client
+  ID and client secret supplied from Google
+  * You can get them from the [Google APIs dashboard][google-apis].
 
-[meetup-apis]: https://www.meetup.com/meetup_api/auth/
+[google-apis]: https://console.developers.google.com/apis/credentials
 
 ## Linting
 

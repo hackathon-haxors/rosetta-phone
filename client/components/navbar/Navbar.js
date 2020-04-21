@@ -36,7 +36,7 @@ const Navbar = ({isLoading}) => {
       <div className="navbar-container">
         <NavLink to="/" className="navbar-logo-navlink">
           <span className="text-style-bold navbar-logo navbar-logo-containee">
-            {largeViewCheck ? 'Meetup Tracker' : 'MTracker'}
+            {largeViewCheck ? 'Rosetta Phone' : 'RPhone'}
           </span>
         </NavLink>
 

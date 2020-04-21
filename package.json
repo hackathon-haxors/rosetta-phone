@@ -1,5 +1,5 @@
 {
-  "name": "meetup-tracker",
+  "name": "rosetta-phone",
   "version": "1.0.0",
   "description": "Some boilerplate code to get you started - get shakin'!",
   "engines": {
@@ -50,7 +50,7 @@
     "history": "^4.9.0",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
-    "passport-meetup-oauth2": "0.0.2",
+    "passport-google-oauth": "^2.0.0",
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
     "prop-types": "^15.7.2",

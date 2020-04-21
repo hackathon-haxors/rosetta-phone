@@ -33,6 +33,7 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
         <div className="remove-outline">
           {isLoggedIn ? (
             <Fragment>
+              {/* The burger will show these links after you log in */}
               <div>
                 <Hello color="white" />
               </div>
@@ -46,7 +47,7 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
               <div>
                 <a
                   className="burger-link"
-                  href="https://github.com/LuigiLegion/meetup-tracker"
+                  href="https://github.com/hackathon-haxors/rosetta-phone"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -62,6 +63,7 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
             </Fragment>
           ) : (
             <Fragment>
+              {/* The navbar will show these links before you log in */}
               <div>
                 <Hello color="white" />
               </div>
@@ -75,7 +77,7 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
               <div>
                 <a
                   className="burger-link"
-                  href="https://github.com/LuigiLegion/meetup-tracker"
+                  href="https://github.com/hackathon-haxors/rosetta-phone"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -84,13 +86,13 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
               </div>
 
               <div>
-                <a className="burger-link" href="/auth/meetup">
+                <a className="burger-link" href="/auth/google">
                   <span className="burger-text-color">Login</span>
                 </a>
               </div>
 
               <div>
-                <a className="burger-link" href="/auth/meetup">
+                <a className="burger-link" href="/auth/google">
                   <span className="burger-text-color">Signup</span>
                 </a>
               </div>

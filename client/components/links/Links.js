@@ -14,16 +14,16 @@ const Links = ({isLoggedIn, handleClick}) => {
       <nav className="links-nav">
         {isLoggedIn ? (
           <div className="links-nav-container">
+            {/* The navbar will show these links after you log in */}
             <Hello className="links-nav-containee" color="gray" />
 
-            {/* The navbar will show these links after you log in */}
             <NavLink to="/" className="links-nav-containee">
               Home
             </NavLink>
 
             <a
               className="links-nav-containee"
-              href="https://github.com/LuigiLegion/meetup-tracker"
+              href="https://github.com/hackathon-haxors/rosetta-phone"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -45,18 +45,18 @@ const Links = ({isLoggedIn, handleClick}) => {
 
             <a
               className="links-nav-containee"
-              href="https://github.com/LuigiLegion/meetup-tracker"
+              href="https://github.com/hackathon-haxors/rosetta-phone"
               target="_blank"
               rel="noopener noreferrer"
             >
               Source
             </a>
 
-            <a className="links-nav-containee" href="/auth/meetup">
+            <a className="links-nav-containee" href="/auth/google">
               Login
             </a>
 
-            <a className="links-nav-containee" href="/auth/meetup">
+            <a className="links-nav-containee" href="/auth/google">
               Signup
             </a>
           </div>

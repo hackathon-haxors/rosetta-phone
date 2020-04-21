@@ -6,12 +6,10 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 
 import userReducer from './reducers/userReducer'
 import layoutReducer from './reducers/layoutReducer'
-import meetupsReducer from './reducers/meetupsReducer'
 
 // Initializations
 const reducer = combineReducers({
   user: userReducer,
-  meetups: meetupsReducer,
   layout: layoutReducer
 })
 const middleware = composeWithDevTools(

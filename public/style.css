@@ -33,11 +33,6 @@ a:hover {
   text-decoration: underline;
 }
 
-a.meetup-time-and-rsvp-link:hover {
-  background: transparent;
-  text-decoration: underline;
-}
-
 form div {
   display: inline-block;
   margin: 1em;
@@ -163,10 +158,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .form-button-containee {
   flex: 1;
   padding: 0em;
-}
-
-.meetup-oauth {
-  margin-top: 2em;
 }
 
 .burger-text-color {

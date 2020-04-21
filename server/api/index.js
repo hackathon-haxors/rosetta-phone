@@ -3,7 +3,6 @@ const router = require('express').Router()
 
 // Middleware
 router.use('/users', require('./routers/users'))
-router.use('/meetups', require('./routers/meetups'))
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')

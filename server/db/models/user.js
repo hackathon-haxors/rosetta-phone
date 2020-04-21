@@ -6,7 +6,7 @@ const db = require('../db')
 
 // Model
 const User = db.define('user', {
-  meetupId: {
+  googleId: {
     type: Sequelize.STRING
   },
   firstName: {

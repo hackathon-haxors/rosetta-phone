@@ -35,7 +35,7 @@ describe('User routes', () => {
 
     it('GET /api/users/:googleId', async () => {
       const res = await request(app)
-        .get('/api/users/333333333333333333333')
+        .get('/api/users/111111111111111111111')
         .expect(200)
 
       expect(res.body).to.be.an('object')

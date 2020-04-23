@@ -5,16 +5,26 @@ const router = require('express').Router()
 const {User} = require('../../db/models')
 
 // Routes
-router.get('/:userId', async (req, res, next) => {
-  const {userId} = req.params
+router.get('/:googleId', async (req, res, next) => {
+  const {googleId} = req.params
 
   try {
-    const user = await User.findByPk(userId, {
-      // Explicitly select only the id, googleId, firstName, lastName,
-      // and email fields - even though users' passwords are encrypted,
-      // it won't help if we just send everything to anyone who asks!
-      attributes: ['id', 'googleId', 'firstName', 'lastName', 'email']
+    const user = await User.findOne({
+      where: {googleId},
+      // Explicitly select only the id, googleId, email, firstName, lastName,
+      // fullName, and imgUrl fields - even though users' passwords are
+      // encrypted, it won't help if we just send everything to anyone who asks!
+      attributes: [
+        'id',
+        'googleId',
+        'email',
+        'firstName',
+        'lastName',
+        'fullName',
+        'imgUrl'
+      ]
     })
+
     res.json(user)
   } catch (error) {
     next(error)

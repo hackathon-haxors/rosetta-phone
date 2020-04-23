@@ -9,6 +9,11 @@ const User = db.define('user', {
   googleId: {
     type: Sequelize.STRING
   },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  },
   firstName: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -23,10 +28,19 @@ const User = db.define('user', {
       notEmpty: true
     }
   },
-  email: {
+  fullName: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
+    validate: {
+      notEmpty: true
+    }
+  },
+  imgUrl: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   password: {
     type: Sequelize.STRING,

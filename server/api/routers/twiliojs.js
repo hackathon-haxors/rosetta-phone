@@ -1,12 +1,13 @@
+// Imports
 const router = require('express').Router()
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
-//const { urlencoded } = require('body-parser');
-const {Translate} = require('@google-cloud/translate').v2;
+const MessagingResponse = require('twilio').twiml.MessagingResponse
+const {Translate} = require('@google-cloud/translate').v2
+// const {urlencoded} = require('body-parser');
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-
-const client = require('twilio')(accountSid, authToken);
+// Initializations
+const accountSid = process.env.TWILIO_ACCOUNT_SID
+const authToken = process.env.TWILIO_AUTH_TOKEN
+const client = require('twilio')(accountSid, authToken)
 
 process.env.GOOGLE_APPLICATION_CREDENTIALS = {
   type: process.env.GC_TYPE,
@@ -21,51 +22,50 @@ process.env.GOOGLE_APPLICATION_CREDENTIALS = {
   client_x509_cert_url: process.env.GC_CLIENT_URL
 }
 
-const translate = new Translate();
+const translate = new Translate()
 
-//sendsms("testmsg");
-console.log("awaiting message");
-
-router.post('/sms', async (req, res, next) => {
-    try{
-    const twiml = new MessagingResponse();
-  
-    //print sender and message
-    console.log(`Incoming message from ${req.body.From}: ${req.body.Body}`);
-    
-    const {Body} = req.body;
-    console.log(Body);
-  
-    const target = 'es';
-    const [result, _] = await translate.translate(Body, target);
-    console.log(result)
-  
-    console.log('send sms'); //send to anyone
-    sendsms(result);
-    console.log('regular') //reply
-    twiml.message(result);
-  
-  
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(twiml.toString());
-  }
-    catch(err){
-      console.error(err);
-      next(err);
-    }
-  });
-  
-  function sendsms(body){
-      const fromnum = process.env.PN_TWIL;
-      const tonum = process.env.PN_TEST;
+const sendsms = body => {
+  const fromnum = process.env.PN_TWIL
+  const tonum = process.env.PN_TEST
 
   client.messages
     .create({
-       body: body,
-       from: fromnum,
-       to: tonum
-     })
-    .then(message => console.log(message.sid));
-  }
+      body: body,
+      from: fromnum,
+      to: tonum
+    })
+    .then(message => console.log(message.sid))
+}
+// sendsms("testmsg");
+// console.log('Awaiting message')
 
+// Routes
+router.post('/sms', async (req, res, next) => {
+  try {
+    const twiml = new MessagingResponse()
+
+    // Print sender and message
+    console.log(`Incoming message from ${req.body.From}: ${req.body.Body}`)
+
+    const {Body} = req.body
+    console.log(Body)
+
+    const target = 'es'
+    const [result, _] = await translate.translate(Body, target)
+    console.log(result)
+
+    console.log('Send sms') // Send to anyone
+    sendsms(result)
+    console.log('Regular') // Reply
+    twiml.message(result)
+
+    res.writeHead(200, {'Content-Type': 'text/xml'})
+    res.end(twiml.toString())
+  } catch (error) {
+    console.error(error)
+    next(error)
+  }
+})
+
+// Exports
 module.exports = router

@@ -43,10 +43,10 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
         where: {googleId},
         defaults: {
           email,
-          imgUrl,
           firstName,
           lastName,
-          fullName
+          fullName,
+          imgUrl
         }
       })
         .then(([user]) => done(null, user))

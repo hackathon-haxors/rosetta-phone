@@ -7,22 +7,17 @@ const client = require('twilio')(
 const {MessagingResponse} = require('twilio').twiml
 const {Translate} = require('@google-cloud/translate').v2
 
-// console.log({client, MessagingResponse, Translate})
-
 // Initializations
 const sendSms = body => {
   const payload = {
     body,
-    from: process.env.PN_TWIL,
+    from: process.env.PN_TWILIO,
     to: process.env.PN_TEST
   }
   console.log({payload})
 
   client.messages.create(payload).then(message => console.log(message.sid))
 }
-
-// sendSms('TESTING')
-// console.log('Awaiting test message')
 
 // Routes
 router.post('/sms', async (req, res, next) => {
@@ -34,11 +29,7 @@ router.post('/sms', async (req, res, next) => {
     const translate = new Translate()
 
     // // Print sender and message
-    // console.log(`Incoming message from ${req.body.From}: ${req.body.Body}`)
-
-    // // Extract message from request body
-    // const {Body} = req.body
-    // console.log({Body})
+    // console.log(`Incoming text message from ${req.body.from} to ${req.body.to}: ${req.body.message}`)
 
     // // Translate message to target language
     // const target = 'es'
@@ -47,11 +38,9 @@ router.post('/sms', async (req, res, next) => {
 
     // Temporary result variable for testing purposes
     const result = message
+    console.log({result})
 
-    console.log('Send SMS') // Send to anyone
     sendSms(result)
-
-    console.log('Regular') // Reply
     twiml.message(result)
 
     res.writeHead(200, {'Content-Type': 'text/xml'})

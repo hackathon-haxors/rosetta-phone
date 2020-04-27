@@ -3,7 +3,7 @@ const router = require('express').Router()
 
 // Middleware
 router.use('/users', require('./routers/users'))
-router.use('/twiliojs', require('./routers/twiliojs'))
+router.use('/twilio', require('./routers/twilio'))
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')

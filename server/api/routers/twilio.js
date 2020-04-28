@@ -1,5 +1,6 @@
 // Imports
-const router = require('express').Router()
+const express = require('express')
+const router = express.Router()
 const client = require('twilio')(
   process.env.TWILIO_ACCOUNT_SID,
   process.env.TWILIO_AUTH_TOKEN
@@ -18,6 +19,9 @@ const sendSms = body => {
 
   client.messages.create(payload).then(message => console.log(message.sid))
 }
+
+// Middleware
+router.use(express.urlencoded({extended: false}))
 
 // Routes
 router.post('/sms', async (req, res, next) => {

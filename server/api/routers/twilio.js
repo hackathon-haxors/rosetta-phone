@@ -1,6 +1,5 @@
 // Imports
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 const client = require('twilio')(
   process.env.TWILIO_ACCOUNT_SID,
   process.env.TWILIO_AUTH_TOKEN
@@ -20,28 +19,24 @@ const sendSms = body => {
   client.messages.create(payload).then(message => console.log(message.sid))
 }
 
-// Middleware
-router.use(express.urlencoded({extended: false}))
-
 // Routes
 router.post('/sms', async (req, res, next) => {
-  const {message} = req.body
-  console.log({message})
+  const {Body, From, To} = req.body
 
   try {
     const twiml = new MessagingResponse()
     const translate = new Translate()
 
-    // // Print sender and message
-    // console.log(`Incoming text message from ${req.body.from} to ${req.body.to}: ${req.body.message}`)
+    // Print sender and message
+    console.log(`Incoming text message from ${From} to ${To}: ${Body}`)
 
     // // Translate message to target language
     // const target = 'es'
-    // const [result, _] = await translate.translate(message, target)
+    // const [result, _] = await translate.translate(Body, target)
     // console.log({result})
 
     // Temporary result variable for testing purposes
-    const result = message
+    const result = Body
     console.log({result})
 
     sendSms(result)

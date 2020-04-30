@@ -21,6 +21,10 @@ const Links = ({isLoggedIn, handleClick}) => {
               Home
             </NavLink>
 
+            <NavLink to="/dashboard" className="links-nav-containee">
+              Dashboard
+            </NavLink>
+
             <a
               className="links-nav-containee"
               href="https://github.com/hackathon-haxors/rosetta-phone"

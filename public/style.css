@@ -50,7 +50,7 @@ input[type='text']:not(.browser-default):focus:not([readonly]),
 input[type='email']:not(.browser-default):focus:not([readonly]),
 input[type='password']:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-color: #f64060;
+  border-color: #26a69a;
   box-shadow: none;
 }
 

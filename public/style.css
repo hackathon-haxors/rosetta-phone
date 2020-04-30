@@ -233,3 +233,15 @@ textarea.materialize-textarea:focus:not([readonly]) {
   color: #0098ab;
   background: none;
 }
+
+.user-id {
+  padding: 1em 0em;
+}
+
+.description {
+  padding: 2em 0em;
+}
+
+.made-by {
+  padding-top: 30em;
+}

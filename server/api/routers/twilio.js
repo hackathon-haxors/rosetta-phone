@@ -43,7 +43,7 @@ router.post('/sms', async (req, res, next) => {
     twiml.message(result)
 
     res.writeHead(200, {'Content-Type': 'text/xml'})
-    res.end(String(twiml))
+    res.end(twiml.toString())
   } catch (error) {
     next(error)
   }

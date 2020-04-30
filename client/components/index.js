@@ -6,6 +6,8 @@
  **/
 
 export {default as PageNotFound} from './404/PageNotFound'
+export {default as AuthForm} from './auth/AuthForm'
+export {default as Dashboard} from './dashboard/Dashboard'
 export {default as Home} from './dashboard/Home'
 export {default as Links} from './links/Links'
 export {default as LinksBurger} from './links/LinksBurger'

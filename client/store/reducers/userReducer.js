@@ -2,6 +2,8 @@
 import axios from 'axios'
 
 import history from '../../history'
+import {toggledPreloaderActionCreator} from './layoutReducer'
+import {toastNotificationGenerator} from '../../helpers'
 
 // Action Types
 const GOT_USER = 'GOT_USER'
@@ -22,6 +24,31 @@ export const me = () => async dispatch => {
     dispatch(gotUserActionCreator(data || initialState))
   } catch (error) {
     console.error(error)
+  }
+}
+
+export const completeSignup = (
+  googleId,
+  role,
+  language,
+  phone
+) => async dispatch => {
+  try {
+    dispatch(toggledPreloaderActionCreator(true))
+
+    const {data} = await axios.put(`/api/users/${googleId}`, {
+      role,
+      language,
+      phone
+    })
+
+    dispatch(gotUserActionCreator(data || initialState))
+    dispatch(toggledPreloaderActionCreator(false))
+
+    toastNotificationGenerator('Completed Signup Successfully', 'green')
+  } catch (error) {
+    console.error(error)
+    toastNotificationGenerator('Error! Unable To Complete Signup', 'red')
   }
 }
 

@@ -1,13 +1,15 @@
 // Imports
-import React, {Fragment} from 'react'
+import React from 'react'
 
 // Component
 const Home = () => {
   return (
-    <Fragment>
-      <div className="center">PLACEHOLDER</div>
+    <div className="component-container center">
+      <div>Welcome to Rosetta Phone!</div>
 
-      <div className="center">
+      <div className="description">DESCRIPTION</div>
+
+      <div className="made-by">
         {'Made with ❤ by '}
 
         <a
@@ -30,7 +32,7 @@ const Home = () => {
           <span className="text-style-bold text-color-blue">Tal Luigi</span>
         </a>
       </div>
-    </Fragment>
+    </div>
   )
 }
 

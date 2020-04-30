@@ -4,7 +4,7 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import {Home, PageNotFound} from './components'
+import {Home, Dashboard, PageNotFound} from './components'
 import {me} from './store'
 
 // Component
@@ -23,6 +23,7 @@ const Routes = ({loadInitialData, isLoggedIn}) => {
       {isLoggedIn && (
         <Switch>
           {/* Routes placed here are only available after logging in */}
+          <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/:wildcard" component={PageNotFound} />
         </Switch>
       )}

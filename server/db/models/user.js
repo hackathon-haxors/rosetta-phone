@@ -42,6 +42,32 @@ const User = db.define('user', {
       notEmpty: true
     }
   },
+  role: {
+    type: Sequelize.STRING,
+    defaultValue: null,
+    validate: {
+      isIn: [['Patient', 'Doctor']]
+    }
+  },
+  language: {
+    type: Sequelize.STRING,
+    defaultValue: null,
+    validate: {
+      isIn: [['en', 'es']]
+    }
+  },
+  phone: {
+    type: Sequelize.STRING,
+    defaultValue: null,
+    validate: {
+      is: /^[2-9]\d{2}-\d{3}-\d{4}$/i
+    }
+  },
+  completedSignup: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  },
   password: {
     type: Sequelize.STRING,
     // Making `.password` act like a func hides it when serializing to JSON.

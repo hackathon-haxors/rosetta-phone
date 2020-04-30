@@ -45,6 +45,16 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
               </div>
 
               <div>
+                <NavLink
+                  to="/dashboard"
+                  className="burger-link"
+                  onClick={closeMenu}
+                >
+                  <span className="burger-text-color">Dashboard</span>
+                </NavLink>
+              </div>
+
+              <div>
                 <a
                   className="burger-link"
                   href="https://github.com/hackathon-haxors/rosetta-phone"

@@ -5,11 +5,13 @@ import {createLogger} from 'redux-logger'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
 import userReducer from './reducers/userReducer'
+import twilioReducer from './reducers/twilioReducer'
 import layoutReducer from './reducers/layoutReducer'
 
 // Initializations
 const reducer = combineReducers({
   user: userReducer,
+  twilio: twilioReducer,
   layout: layoutReducer
 })
 const middleware = composeWithDevTools(

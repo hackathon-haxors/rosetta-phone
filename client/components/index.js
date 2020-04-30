@@ -6,9 +6,12 @@
  **/
 
 export {default as PageNotFound} from './404/PageNotFound'
+export {default as AuthForm} from './auth/AuthForm'
+export {default as Dashboard} from './dashboard/Dashboard'
 export {default as Home} from './dashboard/Home'
 export {default as Links} from './links/Links'
 export {default as LinksBurger} from './links/LinksBurger'
 export {default as Hello} from './navbar/Hello'
 export {default as Navbar} from './navbar/Navbar'
 export {default as Preloader} from './navbar/Preloader'
+export {default as TextForm} from './text/TextForm'

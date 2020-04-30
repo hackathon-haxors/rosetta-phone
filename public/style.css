@@ -50,7 +50,7 @@ input[type='text']:not(.browser-default):focus:not([readonly]),
 input[type='email']:not(.browser-default):focus:not([readonly]),
 input[type='password']:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-color: #f64060;
+  border-color: #26a69a;
   box-shadow: none;
 }
 
@@ -232,4 +232,20 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .author-link:hover {
   color: #0098ab;
   background: none;
+}
+
+.component-container {
+  padding: 2em;
+}
+
+.description {
+  padding: 2em 0em;
+}
+
+.made-by {
+  padding-top: 30em;
+}
+
+.remove-outline {
+  outline: none;
 }

@@ -234,8 +234,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   background: none;
 }
 
-.user-id {
-  padding: 1em 0em;
+.component-container {
+  padding: 2em;
 }
 
 .description {
@@ -244,4 +244,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .made-by {
   padding-top: 30em;
+}
+
+.remove-outline {
+  outline: none;
 }

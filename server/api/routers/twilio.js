@@ -56,8 +56,10 @@ router.post('/sms', sendTextAuth, async (req, res, next) => {
       })
 
       // Manually set patient language and phone number for testing purposes
+      /*
       patient.language = 'es'
       patient.phone = process.env.PN_TEST
+      */
 
       console.log({patient})
 

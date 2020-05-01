@@ -69,13 +69,14 @@ router.post('/sms', sendTextAuth, async (req, res, next) => {
 
     // Print sender and message
     console.log(`Incoming text message from ${From} to ${To}: ${Body}`)
-
+/*
     // Translate message to patient language
     const [result, _] = await translate.translate(
       Body,
       patient.language || 'en'
     )
-
+*/
+    
     console.log({result})
 
     Body = result

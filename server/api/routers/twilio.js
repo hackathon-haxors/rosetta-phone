@@ -75,11 +75,12 @@ router.post('/sms', sendTextAuth, async (req, res, next) => {
       Body,
       patient.language || 'en'
     )
-*/
+
     
     console.log({result})
 
     Body = result
+    */
 
     sendSms(Body, To)
     twiml.message(Body)

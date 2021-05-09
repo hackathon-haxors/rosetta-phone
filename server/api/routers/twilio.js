@@ -73,10 +73,8 @@ router.post('/sms', sendTextAuth, async (req, res, next) => {
       })
 
       // Manually set patient language and phone number for testing purposes
-      /*
-      patient.language = 'es'
-      patient.phone = process.env.PN_TEST
-      */
+      // patient.language = 'es'
+      // patient.phone = process.env.PN_TEST
 
       console.log({patient})
 
@@ -88,18 +86,16 @@ router.post('/sms', sendTextAuth, async (req, res, next) => {
 
     // Print sender and message
     console.log(`Incoming text message from ${From} to ${To}: ${Body}`)
-    /*
+
     // Translate message to patient language
-    const [result, _] = await translate.translate(
-      Body,
-      patient.language || 'en'
-    )
+    // const [result, _] = await translate.translate(
+    //   Body,
+    //   patient.language || 'en'
+    // )
 
-    
-    console.log({result})
+    // console.log({result})
 
-    Body = result
-    */
+    // Body = result
 
     sendSms(Body, To)
     twiml.message(Body)

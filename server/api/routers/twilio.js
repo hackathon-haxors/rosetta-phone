@@ -1,11 +1,19 @@
 // Imports
 const router = require('express').Router()
-const client = require('twilio')(
+const twilioClient = require('twilio')(
   process.env.TWILIO_ACCOUNT_SID,
   process.env.TWILIO_AUTH_TOKEN
 )
 const {MessagingResponse} = require('twilio').twiml
 const {Translate} = require('@google-cloud/translate').v2
+const {auth} = require('google-auth-library')
+
+// Load the environment variable with our keys
+const keysEnvVar = process.env.GCP_CRED
+if (!keysEnvVar) {
+  throw new Error('The $GCP_CRED environment variable was not found!')
+}
+const keys = JSON.parse(keysEnvVar)
 
 // Models
 const {User} = require('../../db/models')
@@ -23,7 +31,9 @@ const sendSms = (body, to) => {
 
   console.log({payload})
 
-  client.messages.create(payload).then(message => console.log(message.sid))
+  twilioClient.messages
+    .create(payload)
+    .then(message => console.log(message.sid))
 }
 
 // Middleware
@@ -42,6 +52,13 @@ router.post('/sms', sendTextAuth, async (req, res, next) => {
   console.log({googleId, text, Body, From, To})
 
   try {
+    // Load the JWT or UserRefreshClient from the keys
+    const client = auth.fromJSON(keys)
+    client.scopes = ['https://www.googleapis.com/auth/cloud-platform']
+    const url = `https://dns.googleapis.com/dns/v1/projects/${keys.project_id}`
+    const response = await client.request({url})
+    console.log(response.data)
+
     const twiml = new MessagingResponse()
     const translate = new Translate()
 

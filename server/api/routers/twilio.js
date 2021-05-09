@@ -13,16 +13,13 @@ const {User} = require('../../db/models')
 // Initializations
 const bodyRegex = /[^\w\s,.!?'"]/gi
 const toRegex = /-+/g
-
 const sendSms = (body, to) => {
   const payload = {
     body,
     from: process.env.PN_TWILIO,
     to
   }
-
   console.log({payload})
-
   client.messages.create(payload).then(message => console.log(message.sid))
 }
 
@@ -38,13 +35,10 @@ const sendTextAuth = (req, res, next) => {
 // Routes
 router.post('/sms', sendTextAuth, async (req, res, next) => {
   let {googleId, text, Body, From, To} = req.body
-
   console.log({googleId, text, Body, From, To})
-
   try {
     const twiml = new MessagingResponse()
     const translate = new Translate()
-
     let patient
     if (googleId) {
       patient = await User.findOne({
@@ -56,10 +50,8 @@ router.post('/sms', sendTextAuth, async (req, res, next) => {
       })
 
       // Manually set patient language and phone number for testing purposes
-      /*
       patient.language = 'es'
       patient.phone = process.env.PN_TEST
-      */
 
       console.log({patient})
 
@@ -68,25 +60,21 @@ router.post('/sms', sendTextAuth, async (req, res, next) => {
         To = `+1${patient.phone.replace(toRegex, '')}`
       }
     }
-
     // Print sender and message
     console.log(`Incoming text message from ${From} to ${To}: ${Body}`)
-/*
+
     // Translate message to patient language
     const [result, _] = await translate.translate(
       Body,
       patient.language || 'en'
     )
 
-    
     console.log({result})
 
     Body = result
-    */
 
     sendSms(Body, To)
     twiml.message(Body)
-
     res.writeHead(200, {'Content-Type': 'text/xml'})
     res.end(twiml.toString())
   } catch (error) {

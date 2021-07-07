@@ -5,12 +5,12 @@ import history from '../../history'
 import {toggledPreloaderActionCreator} from './layoutReducer'
 import {toastNotificationGenerator} from '../../helpers'
 
+// Initial State
+const initialState = {}
+
 // Action Types
 const GOT_USER = 'GOT_USER'
 const REMOVED_USER = 'REMOVED_USER'
-
-// Initial State
-const initialState = {}
 
 // Action Creators
 export const gotUserActionCreator = user => ({type: GOT_USER, user})

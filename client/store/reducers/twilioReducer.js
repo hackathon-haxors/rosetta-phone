@@ -4,11 +4,11 @@ import axios from 'axios'
 import {toggledPreloaderActionCreator} from './layoutReducer'
 import {toastNotificationGenerator} from '../../helpers'
 
-// Action Types
-const SENT_TEXT = 'SENT_TEXT'
-
 // Initial State
 const initialState = {}
+
+// Action Types
+const SENT_TEXT = 'SENT_TEXT'
 
 // Action Creators
 export const sentTextActionCreator = response => ({

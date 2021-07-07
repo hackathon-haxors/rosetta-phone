@@ -5,8 +5,8 @@ import {Router} from 'react-router-dom'
 import {Provider} from 'react-redux'
 
 import history from './history'
-import store from './store'
 import App from './App'
+import store from './store'
 
 // Establishes Socket connection
 import './socket'

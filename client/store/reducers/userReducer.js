@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 import history from '../../history'
-import {toggledPreloaderActionCreator} from './layoutReducer'
+import {toggledPreloaderActionCreator} from '..'
 import {toastNotificationGenerator} from '../../helpers'
 
 // Initial State

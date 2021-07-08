@@ -14,4 +14,6 @@ const store = createStore(rootReducer, middleware)
 
 // Exports
 export default store
+export * from './reducers/layoutReducer'
+export * from './reducers/twilioReducer'
 export * from './reducers/userReducer'

@@ -94,10 +94,11 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthForm)
-
 // Prop Types
 AuthForm.propTypes = {
   googleId: PropTypes.string,
   completeSignupThunk: PropTypes.func
 }
+
+// Exports
+export default connect(mapStateToProps, mapDispatchToProps)(AuthForm)

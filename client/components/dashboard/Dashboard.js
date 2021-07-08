@@ -37,11 +37,12 @@ const mapStateToProps = state => ({
   completedSignup: state.user.completedSignup
 })
 
-export default connect(mapStateToProps)(Dashboard)
-
 // Prop Types
 Dashboard.propTypes = {
   googleId: PropTypes.string,
   role: PropTypes.string,
   completedSignup: PropTypes.bool
 }
+
+// Exports
+export default connect(mapStateToProps)(Dashboard)

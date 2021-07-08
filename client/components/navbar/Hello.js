@@ -17,11 +17,12 @@ const mapStateToProps = state => ({
   firstName: state.user.firstName
 })
 
-export default connect(mapStateToProps)(Hello)
-
 // Prop Types
 Hello.propTypes = {
   firstName: PropTypes.string,
   color: PropTypes.string,
   onClick: PropTypes.func
 }
+
+// Exports
+export default connect(mapStateToProps)(Hello)

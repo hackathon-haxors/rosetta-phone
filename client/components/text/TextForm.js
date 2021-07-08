@@ -84,9 +84,10 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(null, mapDispatchToProps)(TextForm)
-
 // Prop Types
 TextForm.propTypes = {
   sendTextThunk: PropTypes.func
 }
+
+// Exports
+export default connect(null, mapDispatchToProps)(TextForm)

@@ -81,10 +81,11 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Links)
-
 // Prop Types
 Links.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired
 }
+
+// Exports
+export default connect(mapStateToProps, mapDispatchToProps)(Links)

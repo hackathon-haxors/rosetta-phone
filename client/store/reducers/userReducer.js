@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import history from '../../history'
 import {toggledPreloaderActionCreator} from '..'
-import {toastNotificationGenerator} from '../../helpers'
+import {toastNotification} from '../../utils'
 
 // Initial State
 const initialState = {}
@@ -44,10 +44,10 @@ export const completeSignup = (googleId, role, language, phone) => {
       dispatch(gotUserActionCreator(data || initialState))
       dispatch(toggledPreloaderActionCreator(false))
 
-      toastNotificationGenerator('Completed Signup Successfully', 'green')
+      toastNotification('Completed Signup Successfully', 'green')
     } catch (error) {
       console.error(error)
-      toastNotificationGenerator('Error! Unable To Complete Signup', 'red')
+      toastNotification('Error! Unable To Complete Signup', 'red')
     }
   }
 }

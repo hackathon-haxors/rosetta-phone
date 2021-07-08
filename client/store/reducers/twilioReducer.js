@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 import {toggledPreloaderActionCreator} from '..'
-import {toastNotificationGenerator} from '../../helpers'
+import {toastNotification} from '../../utils'
 
 // Initial State
 const initialState = {}
@@ -31,10 +31,10 @@ export const sendTextThunkCreator = (googleId, text) => async dispatch => {
     dispatch(sentTextActionCreator(data))
     dispatch(toggledPreloaderActionCreator(false))
 
-    toastNotificationGenerator('Text Sent Successfully', 'green')
+    toastNotification('Text Sent Successfully', 'green')
   } catch (error) {
     console.error(error)
-    toastNotificationGenerator('Error! Unable To Send Text', 'red')
+    toastNotification('Error! Unable To Send Text', 'red')
   }
 }
 

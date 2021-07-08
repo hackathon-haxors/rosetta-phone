@@ -14,52 +14,54 @@ const REMOVED_USER = 'REMOVED_USER'
 
 // Action Creators
 export const gotUserActionCreator = user => ({type: GOT_USER, user})
+
 export const removedUserActionCreator = () => ({type: REMOVED_USER})
 
 // Thunk Creators
-export const me = () => async dispatch => {
-  try {
-    const {data} = await axios.get('/auth/me')
+export const me = () => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.get('/auth/me')
 
-    dispatch(gotUserActionCreator(data || initialState))
-  } catch (error) {
-    console.error(error)
+      dispatch(gotUserActionCreator(data || initialState))
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 
-export const completeSignup = (
-  googleId,
-  role,
-  language,
-  phone
-) => async dispatch => {
-  try {
-    dispatch(toggledPreloaderActionCreator(true))
+export const completeSignup = (googleId, role, language, phone) => {
+  return async dispatch => {
+    try {
+      dispatch(toggledPreloaderActionCreator(true))
 
-    const {data} = await axios.put(`/api/users/${googleId}`, {
-      role,
-      language,
-      phone
-    })
+      const {data} = await axios.put(`/api/users/${googleId}`, {
+        role,
+        language,
+        phone
+      })
 
-    dispatch(gotUserActionCreator(data || initialState))
-    dispatch(toggledPreloaderActionCreator(false))
+      dispatch(gotUserActionCreator(data || initialState))
+      dispatch(toggledPreloaderActionCreator(false))
 
-    toastNotificationGenerator('Completed Signup Successfully', 'green')
-  } catch (error) {
-    console.error(error)
-    toastNotificationGenerator('Error! Unable To Complete Signup', 'red')
+      toastNotificationGenerator('Completed Signup Successfully', 'green')
+    } catch (error) {
+      console.error(error)
+      toastNotificationGenerator('Error! Unable To Complete Signup', 'red')
+    }
   }
 }
 
-export const logout = () => async dispatch => {
-  try {
-    await axios.post('/auth/logout')
+export const logout = () => {
+  return async dispatch => {
+    try {
+      await axios.post('/auth/logout')
 
-    dispatch(removedUserActionCreator())
-    history.push('/')
-  } catch (error) {
-    console.error(error)
+      dispatch(removedUserActionCreator())
+      history.push('/')
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 

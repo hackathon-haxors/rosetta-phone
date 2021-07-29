@@ -1,5 +1,5 @@
 // Imports
-import React, {Fragment, useState} from 'react'
+import React, {useState} from 'react'
 import {NavLink} from 'react-router-dom'
 import {slide as Menu} from 'react-burger-menu'
 import {connect} from 'react-redux'
@@ -32,7 +32,7 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
       {menuOpen && (
         <div className="remove-outline">
           {isLoggedIn ? (
-            <Fragment>
+            <>
               {/* The burger will show these links after you log in */}
               <div>
                 <Hello color="white" />
@@ -70,9 +70,9 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
                   <span className="burger-text-color">Logout</span>
                 </a>
               </div>
-            </Fragment>
+            </>
           ) : (
-            <Fragment>
+            <>
               {/* The navbar will show these links before you log in */}
               <div>
                 <Hello color="white" />
@@ -106,7 +106,7 @@ const LinksBurger = ({isLoggedIn, handleClick}) => {
                   <span className="burger-text-color">Signup</span>
                 </a>
               </div>
-            </Fragment>
+            </>
           )}
         </div>
       )}

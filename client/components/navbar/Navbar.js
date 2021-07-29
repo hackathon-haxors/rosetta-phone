@@ -1,5 +1,5 @@
 // Imports
-import React, {Fragment, useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
@@ -30,7 +30,7 @@ const Navbar = ({isLoading}) => {
   )
 
   return (
-    <Fragment>
+    <>
       {!largeViewCheck && <LinksBurger />}
 
       <div className="navbar-container">
@@ -44,7 +44,7 @@ const Navbar = ({isLoading}) => {
       </div>
 
       <div>{isLoading && <Preloader />}</div>
-    </Fragment>
+    </>
   )
 }
 
